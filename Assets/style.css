@@ -1,0 +1,23 @@
+.nav {
+  background-color: #2e2e35;
+  color: #ffffff;
+}
+#leftCard {
+  background-color: #f0efef;
+}
+.card-header {
+  background-color: #f0efef;
+}
+#search-button {
+  background-color: #0051e9;
+  color: #ffffff;
+}
+#rightCard {
+  border: solid 0.1px #ecebeb;
+}
+
+.city-btn {
+  border-radius: 0.5rem;
+  background-color: aquamarine;
+  margin-top: 10px;
+}
