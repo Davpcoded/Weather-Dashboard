@@ -1,16 +1,15 @@
 $(document).ready(function () {
-  const apiKey = "d38c345a3581d0a6698ced8db6bdcbba5";
+  const apiKey = "38c345a3581d0a6698ced8db6bdcbba5";
   //=================Event listener for city input==============//
   $("#search-button").on("click", function (e) {
     e.preventDefault();
     let cityInputValue = $("#cityInput").val();
     if (cityInputValue != "") {
       const queryURL =
-        "http://maps.openweathermap.org/maps/2.0/weather/{op}/{z}/{x}/{y}" +
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
         cityInputValue +
-        "&appid=" +
+        "&units=metric&APPID=" +
         apiKey;
-
       const newButton = $("<button>");
       newButton.text(cityInputValue);
       newButton.addClass("city-btn");
@@ -19,14 +18,13 @@ $(document).ready(function () {
       $("#cityInput").focus(function () {
         $(this).val("");
       });
-      /* fetchWeatherData(queryURL); */
+      fetchWeatherData(queryURL);
     } else {
       alert("Provide a city");
     }
   });
 
-  /* function fetchWeatherData(queryURL) {
-    console.log(queryURL);
+  function fetchWeatherData(queryURL) {
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -35,5 +33,5 @@ $(document).ready(function () {
 
   function processWeatherData(response) {
     console.log(response);
-  } */
+  }
 });
