@@ -35,26 +35,27 @@ $(document).ready(function () {
         "&units=imperial&APPID=" +
         apiKey,
       method: "GET",
-    }).then(currentDayWeatherData);
+    }).then(renderCurrentWeather);
   }
 
   function forecastData(response) {
     const forecastData = response;
     console.log(forecastData);
-    /* const cityButton = $("<button>");
-    cityButton.text(response.main.temp);
-    cityButton.addClass("city-btn");
-    $("#rightCard").append(cityButton);
-    $("#rightCard").append("<br>"); */
   }
 
-  function currentDayWeatherData(response) {
+  function renderCurrentWeather(response) {
+    console.log(response);
     const iconCode = response.weather[0].icon;
+    const currentWeather = response.weather[0].main;
+    const windSpeed = response.wind.speed;
+    const cityName = response.name;
+    const currentHumidity = response.main.humidity;
+    console.log(currentHumidity);
 
     const cityIcon = $("<img>");
     cityIcon.attr(
       "src",
-      "http://openweathermap.org/img/wn/" + iconCode + ".png"
+      "http://openweathermap.org/img/w/" + iconCode + ".png"
     );
     $("#rightCard").append(cityIcon);
     $("#rightCard").append("<br>");

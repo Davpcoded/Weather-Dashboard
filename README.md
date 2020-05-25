@@ -3,3 +3,4 @@
 - Set AJAX calls to bring correct data
 - API's consumed (openweathermap.org)
 - succesfully pulled weather icon for current day and forecast
+  wind, weather, name humidity temp, temp_min, temp_max
