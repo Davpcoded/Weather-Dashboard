@@ -46,17 +46,18 @@ $(document).ready(function () {
   }
 
   function renderCurrentWeather(response) {
-    // console.log(response);
+    console.log(response);
     const iconCode = response.weather[0].icon;
-    const currentWeather = response.weather[0].main;
+    const currentWeather = response.weather[0].description;
     const windSpeed = response.wind.speed;
     const cityName = response.name;
     const currentHumidity = response.main.humidity;
+    const currentTemperature = response.main.temp;
 
-    /* const weatherCard = $("<div>");
-    weatherCard.addClass("jumbotron");
-    $("#rightCard").append(weatherCard);
-    //$("#rightCard").append("<br>"); */
+    $("#city-temp").text("Temperature: " + currentTemperature + "°F");
+    $("#city-humidity").text("Humidity: " + currentHumidity + "%");
+    $("#city-weather").text("Description: " + currentWeather);
+    $("#city-wind").text("Wind Speed: " + windSpeed + "mph");
 
     const cityWeatherIcon = $("<img>");
     cityWeatherIcon.attr(
@@ -69,7 +70,7 @@ $(document).ready(function () {
     displayCityName.addClass("jumbo-header");
     displayCityName.text(cityName);
     $("#jumbotron").append(displayCityName);
-    console.log(currentTime);
+
     const displayCurrentTime = $("<h5>");
     displayCurrentTime.addClass("current-time");
     displayCurrentTime.text(currentTime);
