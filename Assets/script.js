@@ -3,35 +3,60 @@ $(document).ready(function () {
   //=================Event listener for city input==============//
   $("#search-button").on("click", function (e) {
     e.preventDefault();
-    let cityInputValue = $("#cityInput").val();
+    const cityInputValue = $("#cityInput").val();
     if (cityInputValue != "") {
-      const queryURL =
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-        cityInputValue +
-        "&units=metric&APPID=" +
-        apiKey;
-      const newButton = $("<button>");
-      newButton.text(cityInputValue);
-      newButton.addClass("city-btn");
-      $("#leftCard").append(newButton);
+      const cityButton = $("<button>");
+      cityButton.text(cityInputValue);
+      cityButton.addClass("city-btn");
+      $("#leftCard").append(cityButton);
       $("#leftCard").append("<br>");
       $("#cityInput").focus(function () {
         $(this).val("");
       });
-      fetchWeatherData(queryURL);
+      fetchWeatherData(cityInputValue);
     } else {
-      alert("Provide a city");
+      alert("Provide a City !");
     }
   });
-
-  function fetchWeatherData(queryURL) {
+  //==================AJAX Calls==================//
+  function fetchWeatherData(cityInputValue) {
     $.ajax({
-      url: queryURL,
+      url:
+        "https://api.openweathermap.org/data/2.5/forecast?q=" +
+        cityInputValue +
+        "&units=imperial&APPID=" +
+        apiKey,
       method: "GET",
-    }).then(processWeatherData);
+    }).then(forecastData);
+    $.ajax({
+      url:
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+        cityInputValue +
+        "&units=imperial&APPID=" +
+        apiKey,
+      method: "GET",
+    }).then(currentDayWeatherData);
   }
 
-  function processWeatherData(response) {
-    console.log(response);
+  function forecastData(response) {
+    const forecastData = response;
+    console.log(forecastData);
+    /* const cityButton = $("<button>");
+    cityButton.text(response.main.temp);
+    cityButton.addClass("city-btn");
+    $("#rightCard").append(cityButton);
+    $("#rightCard").append("<br>"); */
+  }
+
+  function currentDayWeatherData(response) {
+    const iconCode = response.weather[0].icon;
+
+    const cityIcon = $("<img>");
+    cityIcon.attr(
+      "src",
+      "http://openweathermap.org/img/wn/" + iconCode + ".png"
+    );
+    $("#rightCard").append(cityIcon);
+    $("#rightCard").append("<br>");
   }
 });
