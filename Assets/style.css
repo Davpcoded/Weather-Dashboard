@@ -39,8 +39,10 @@
 
 .jumbo-header {
   float: left;
+  padding-left: 10px;
 }
 
 .current-time {
   float: right;
+  padding-right: 10px;
 }
