@@ -1,3 +1,5 @@
+const currentTime = moment().format("LLL");
+
 $(document).ready(function () {
   const apiKey = "38c345a3581d0a6698ced8db6bdcbba5";
   //=================Event listener for city input==============//
@@ -44,20 +46,33 @@ $(document).ready(function () {
   }
 
   function renderCurrentWeather(response) {
-    console.log(response);
+    // console.log(response);
     const iconCode = response.weather[0].icon;
     const currentWeather = response.weather[0].main;
     const windSpeed = response.wind.speed;
     const cityName = response.name;
     const currentHumidity = response.main.humidity;
-    console.log(currentHumidity);
 
-    const cityIcon = $("<img>");
-    cityIcon.attr(
+    /* const weatherCard = $("<div>");
+    weatherCard.addClass("jumbotron");
+    $("#rightCard").append(weatherCard);
+    //$("#rightCard").append("<br>"); */
+
+    const cityWeatherIcon = $("<img>");
+    cityWeatherIcon.attr(
       "src",
       "http://openweathermap.org/img/w/" + iconCode + ".png"
     );
-    $("#rightCard").append(cityIcon);
-    $("#rightCard").append("<br>");
+    $("#jumbotron").append(cityWeatherIcon);
+
+    const displayCityName = $("<h2>");
+    displayCityName.addClass("jumbo-header");
+    displayCityName.text(cityName);
+    $("#jumbotron").append(displayCityName);
+    console.log(currentTime);
+    const displayCurrentTime = $("<h5>");
+    displayCurrentTime.addClass("current-time");
+    displayCurrentTime.text(currentTime);
+    $("#jumbotron").append(displayCurrentTime);
   }
 });
