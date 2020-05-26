@@ -7,6 +7,7 @@
 }
 .card-header {
   background-color: #f0efef;
+  border-bottom: none;
 }
 #search-button {
   background-color: #0051e9;
@@ -20,6 +21,9 @@
   border-radius: 0.5rem;
   background-color: aquamarine;
   margin-top: 10px;
+}
+#cityInput {
+  float: left;
 }
 
 .jumbotron-fluid {
@@ -38,4 +42,20 @@
 .current-time {
   float: right;
   padding-right: 10px;
+}
+
+#forecastCard0,
+#forecastCard1,
+#forecastCard2,
+#forecastCard3 {
+  float: left;
+  margin-right: 30px;
+  width: 230px;
+  background-color: cadetblue;
+  border-radius: 0.5rem;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 200px;
 }

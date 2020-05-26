@@ -39,14 +39,23 @@ $(document).ready(function () {
       method: "GET",
     }).then(renderCurrentWeather);
   }
-
+  //======================Render DATA====================//
   function forecastData(response) {
-    const forecastData = response;
-    console.log(forecastData);
+    console.log(response);
+    const forecastDate0 = moment().add(1, "days").format("LL");
+    $("#forecastHeader0").text(forecastDate0);
+
+    const forecastDate1 = moment().add(2, "days").format("LL");
+    $("#forecastHeader1").text(forecastDate1);
+
+    const forecastDate2 = moment().add(3, "days").format("LL");
+    $("#forecastHeader2").text(forecastDate2);
+
+    const forecastDate3 = moment().add(4, "days").format("LL");
+    $("#forecastHeader3").text(forecastDate3);
   }
 
   function renderCurrentWeather(response) {
-    console.log(response);
     const iconCode = response.weather[0].icon;
     const currentWeather = response.weather[0].description;
     const windSpeed = response.wind.speed;
