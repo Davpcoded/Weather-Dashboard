@@ -2,7 +2,7 @@ const currentTime = moment().format("LLL");
 
 $(document).ready(function () {
   const apiKey = "38c345a3581d0a6698ced8db6bdcbba5";
-  //=================Event listener for city input==============//
+  //=================Event listener for city input and search history==============//
   $("#search-button").on("click", function (e) {
     e.preventDefault();
     const cityInputValue = $("#cityInput").val();
@@ -14,6 +14,10 @@ $(document).ready(function () {
       $("#leftCard").append("<br>");
       $("#cityInput").focus(function () {
         $(this).val("");
+      });
+      $(".city-btn").click(function () {
+        let cityBtnText = $(this).text();
+        fetchWeatherData(cityBtnText);
       });
       fetchWeatherData(cityInputValue);
     } else {
@@ -54,8 +58,9 @@ $(document).ready(function () {
     const forecastDate3 = moment().add(4, "days").format("LL");
     $("#forecastHeader3").text(forecastDate3);
   }
-
+  //=====================CurrentDay======================//
   function renderCurrentWeather(response) {
+    resetState();
     const iconCode = response.weather[0].icon;
     const currentWeather = response.weather[0].description;
     const windSpeed = response.wind.speed;
@@ -84,5 +89,9 @@ $(document).ready(function () {
     displayCurrentTime.addClass("current-time");
     displayCurrentTime.text(currentTime);
     $("#jumbotron").append(displayCurrentTime);
+  }
+
+  function resetState() {
+    $("#jumbotron").empty();
   }
 });
