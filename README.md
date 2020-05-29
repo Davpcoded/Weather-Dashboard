@@ -2,7 +2,7 @@
 
 - link to the app https://davpcoded.github.io/Code-quiz/
 
-![image](https://github.com/Davpcoded/Code-quiz/blob/master/Assets/Images/Code-Quiz.gif)
+![image](https://github.com/Davpcoded/Weather-Dashboard/blob/master/Assets/Images/Weather%20Dashboard.gif)
 
 # Github
 
